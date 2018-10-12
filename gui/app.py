@@ -27,3 +27,6 @@ root = Tk()
 app = Application(master=root)
 app.mainloop()
 root.destroy()
+
+ git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"

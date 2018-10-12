@@ -1,8 +1,6 @@
-from Tkinter import *
-
-class Application(Frame):
+class main(self):
     def say_hi(self):
-        print "hi there, everyone!"
+            print "hi there, everyone!"
 
     def createWidgets(self):
         self.QUIT = Button(self)
@@ -18,15 +16,4 @@ class Application(Frame):
 
         self.hi_there.pack({"side": "left"})
 
-    def __init__(self, master=None):
-        Frame.__init__(self, master)
-        self.pack()
-        self.createWidgets()
 
-root = Tk()
-app = Application(master=root)
-app.mainloop()
-root.destroy()
-
- git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"

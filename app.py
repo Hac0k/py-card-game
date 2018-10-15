@@ -1,4 +1,5 @@
 from Tkinter import *
+<<<<<<< HEAD
 from gui.main import main
 
 class Application():
@@ -12,7 +13,11 @@ class Application():
 
         self.createwidgest
 
+=======
+import gui.start  
+    
+>>>>>>> a6cba43112de4309e52e2404892962a4b96884fa
 root = Tk()
-app = Application(master=root)
+app = gui.start.Application(master=root)
 app.mainloop()
 root.destroy()

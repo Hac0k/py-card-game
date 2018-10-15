@@ -1,6 +1,11 @@
+<<<<<<< HEAD:gui/main.py
 class main():
+=======
+
+class Application(Frame):
+>>>>>>> a6cba43112de4309e52e2404892962a4b96884fa:gui/start.py
     def say_hi(self):
-            print "hi there, everyone!"
+        print "hi there, everyone!"
 
     def createWidgets(self):
         self.QUIT = Button(self)
@@ -16,4 +21,8 @@ class main():
 
         self.hi_there.pack({"side": "left"})
 
+    def __init__(self, master=None):
+        Frame.__init__(self, master)
+        self.pack()
+        self.createWidgets()
 

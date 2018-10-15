@@ -1,12 +1,15 @@
 from Tkinter import *
-from gui import *
+from gui.main import main
 
-class Application(Frame):
+class Application():
 
       def __init__(self, master=None):
         Frame.__init__(self, master)
         self.pack()
-        createwidgest = new main.createWidgets(self)
+        # main1 = main()
+        # createwidgest = main1.createWidgets(self)
+        createwidgest = main.createWidgets()
+
         self.createwidgest
 
 root = Tk()

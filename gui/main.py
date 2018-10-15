@@ -1,4 +1,4 @@
-class main(self):
+class main():
     def say_hi(self):
             print "hi there, everyone!"
 

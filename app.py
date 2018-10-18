@@ -1,8 +1,8 @@
 from Tkinter import *
-from gui.start import Application
+from gui.start import *
 
 
 root = Tk()
-app = start.Application(master=root)
-app.mainloop()
-root.destroy()
+app = initial(root)
+root.mainloop()
+

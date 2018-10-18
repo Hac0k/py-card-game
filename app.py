@@ -3,6 +3,6 @@ from gui.start import Application
 
 
 root = Tk()
-app = gui.start.Application(master=root)
+app = start.Application(master=root)
 app.mainloop()
 root.destroy()

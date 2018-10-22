@@ -3,6 +3,6 @@ from gui.start import *
 
 
 root = Tk()
-app = initial(root)
+app = Calculator(root)
 root.mainloop()
 

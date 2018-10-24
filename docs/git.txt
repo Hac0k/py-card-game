@@ -1,0 +1,2 @@
+to reset your local to channge to remote git 
+git reset --hard origin/master

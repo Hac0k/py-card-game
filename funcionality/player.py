@@ -1,5 +1,6 @@
 from random import *
 class player(object):
+
 	"""docstring for player"""
 	playername = None
 
@@ -12,20 +13,4 @@ class player(object):
 		return {'name':playerName,'status':'ai','cardsHand':[],'deckplayer':[],'statusShuffle':False,}		
 
 
-# class actionsPlayer(action):
-	# """docstring for player"""
-
-	# switch(action):
-	# case 1 : action == 1:
-	# 	take(deck):
-			
 		
-	# def passe():
-	# 	pass
-	# def contructor():
-	# 	pass
-
-	# def doubleContructor():
-	# 	pass
-	# def moreConstructor():
-	# 	pass

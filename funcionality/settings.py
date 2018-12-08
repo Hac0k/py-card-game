@@ -14,15 +14,15 @@ class Setting(object):
 
 	def createPlayers(self):
 		try:
-			print "Your name "	
-			user = raw_input()
+			print("Your name ")	
+			user = input()
 			if user.isdigit():
-				print msg['troll'],msg['nameIncorrect']
+				print (msg['troll'],msg['nameIncorrect'])
 				self.createPlayers()
 			players.append(player(user).players())
 			self.createAiPlayers()				
 		except ValueError:
-			print msg['troll'],msg['nameIncorrect']
+			print(msg['troll'],msg['nameIncorrect'])
 			self.createPlayers()
 
 
@@ -31,21 +31,21 @@ class Setting(object):
 
 	def createAiPlayers(self,numberPlayers=None):
 		try:
-			print msg['howplayer']
-			numberPlayers=raw_input()
+			print(msg['howplayer'])
+			numberPlayers=input()
 			int(numberPlayers)
 			if int(numberPlayers) >=5 or int(numberPlayers) == 0:
-				print msg['numberIncorrect']
-				entry=raw_input()
+				print(msg['numberIncorrect'])
+				entry=input()
 				if (entry == "yes" or entry == "y"):
-					print msg['howplayer']
+					print(msg['howplayer'])
 					try:
-						number=raw_input()
+						number=input()
 						int(number-1)
 						numberPlayers = number if number > 4 or number != 0 else 4
 						return self.createAiPlayers(numberPlayers)
 					except ValueError:
-						print msg['troll'],msg['numberFalse'],msg['autoselect']
+						print(msg['troll'],msg['numberFalse'],msg['autoselect'])
 						return self.createAiPlayers(numberPlayers=4)
 				else:
 					return self.createAiPlayers(numberPlayers=4)
@@ -53,14 +53,14 @@ class Setting(object):
 				players.append(player(None).players())
 			setting['players'] = players
 		except ValueError:
-			print msg['troll']
+			print(msg['troll'])
 			return self.createAiPlayers(numberPlayers=4)
 
 	
 
- 	def settings(self):
- 		self.createPlayers()
- 		setting['deck']=deck().shuffle()
- 		setting['noPlayers']=len(players)
- 		setting['table']=[]
- 		return setting
+	def settings(self):
+		self.createPlayers()
+		setting['deck']=deck().shuffle()
+		setting['noPlayers']=len(players)
+		setting['table']=[]
+		return setting

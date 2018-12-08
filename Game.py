@@ -1,5 +1,6 @@
 from funcionality.point import *
 from funcionality.settings import *
+from gui.console.table_console import *
 
 class actionsTable(object):
 	def __init__(self, action, players):
@@ -19,7 +20,7 @@ class actionsTable(object):
 	        return self.passe()
 	
 	def take(self):
-		
+		pass
 	def passe():
 		pass
 	def contructor():
@@ -43,8 +44,10 @@ class main(object):
 	table = settings['table']
 	
 	def tables(self,n=0):
+		self.shuffle()
 		if (self.shuffle()):
 			return 'close game'
+		print(showTable(table))
 
 		
 
@@ -59,11 +62,10 @@ class main(object):
 
 
 
-		self.shuffle()
+		
 		return self.tables(self) 
 	
 	def shuffle(self):
-		print len(deck)
 		if(len(deck) == 0):
 			return True
 		if (len(deck) == 52):
@@ -79,7 +81,7 @@ class main(object):
 
 		
 
-print main().tables()
+print(main().tables())
 
 
 

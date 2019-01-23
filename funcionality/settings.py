@@ -19,7 +19,7 @@ class Setting(object):
 			if user.isdigit():
 				print (msg['troll'],msg['nameIncorrect'])
 				self.createPlayers()
-			players.append(player(user).players())
+			players.append(player(user).players(True))
 			self.createAiPlayers()				
 		except ValueError:
 			print(msg['troll'],msg['nameIncorrect'])

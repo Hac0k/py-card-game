@@ -4,16 +4,25 @@ clear = lambda: os.system('cls')
 
 def cards(decks):
 
-	templ,lists="""
+	templ,const,lists="""
 	----------
 	| {}  {}  |
 	|        |
 	|        |
 	----------
+""","""
+	-----------------
+	| {}  {}  |{} {}|
+	|        |	    |
+	|       {}|	    |
+	---------|-------
 """,[]
-	
+
 	for x in decks:
-		lists.append(templ.format(x['value'],x['simbol']))
+		if isinstance(x, list):
+			lists.append(const.format(x[0]['value'],x[0]['simbol'],x[1]['value'],x[1]['simbol'],(x[0]['value']+x[1]['value'])))
+		else:
+			lists.append(templ.format(x['value'],x['simbol']))
 	lines = [lists[i].splitlines() for i in range(len(lists))]
 
 	return lines
@@ -94,19 +103,19 @@ def welcomemsj():
 		""")
 	if input():
 		return clear()
-def showTable(table,cardsPlayers):
-	# templateDict ={'number':number,'simbol':simbol,'status':'maindeck','value':(cards[1].index(number))+1,'img':None}
+
+def showCompleteTable(table,player):
+	print(player)
+	print(table)
+
+	cardsPlayers = player['cardsHand']
+	namePlayer = player['name']
+
+	print(showTable(table,'table'),showTable(cardsPlayers,'cardsPlayers',namePlayer))
+def showTable(table, name, namePlayer=None):
+	line =("\n"*2)
+	spaces = (" "*10)
+	print("{}{}{}{}{}".format(line,spaces,name,spaces,namePlayer,spaces,line))
 	elementsTable = cards(table) 
 	for l in zip(*elementsTable):
-		print(*l, sep=' ')
-
-	print()
-	print(" "*10+"your cards"+" "*10)
-	print()
-
-	cardPlayer = cards(cardsPlayers)
-	for l in zip(*cardPlayer):
 		print(*l, sep='')
-
-
-

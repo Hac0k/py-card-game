@@ -1,6 +1,6 @@
 from funcionality.point import *
 from funcionality.settings import *
-from funcionality.ia import *
+from funcionality.IA import *
 from funcionality.actions import *
 from gui.console.table_console import *
 import os

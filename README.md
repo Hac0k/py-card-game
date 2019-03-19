@@ -1,5 +1,5 @@
 # py-card-game
- This is a little project in python 
+ This is a casino game in python 
 
 ## To run the project to need 
 ```

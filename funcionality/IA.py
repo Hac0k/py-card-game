@@ -7,7 +7,7 @@ def iaActions(player,table):
 	if action == 1:
 		card = choice(table)
 		cardSelect = card['value']
-		actionsTable(player,table).actions(action,cardSelect)	
+		ActionsTable(player,table).actions(action,cardSelect)	
 	card = choice(player['cardsHand'])
 	cardSelect = card['value']
-	actionsTable(player,table).actions(action,cardSelect)
+	ActionsTable(player,table).actions(action,cardSelect)

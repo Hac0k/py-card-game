@@ -1,13 +1,14 @@
-class point(object):
+
+class Point(object):
 	"""docstring for point"""
 	def __init__(self,players):
 		self.players = players
 		self.points()
 		
-	def points(players):
+	def points(self,players):
 		pass
 
-	def cards(players):
+	def cards(self,players):
 		listsOfPlayer =[]
 
 		for x in players:

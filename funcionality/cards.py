@@ -1,6 +1,6 @@
 from random import * 
 
-class card():
+class Card():
 	
 	def createCards(self):
 		deck = []

@@ -1,6 +1,6 @@
 from funcionality.point import *
 from funcionality.settings import *
-from funcionality.IA import *
+from funcionality.ia import *
 from funcionality.actions import *
 from gui.console.table_console import *
 import os
@@ -35,27 +35,13 @@ class main(object):
 				print(msg['actions'])
 				action = input()
 				if players[x]['status'] == 'player':
-					actionsTable(players[x],table).actions(int(action))
+					ActionsTable(players[x],table).actions(int(action))
 				else:
 					iaActions(players[x],table)
 				print(showCompleteTable(table,players[0]))
 				print(len(players[0]['cardsHand']))
 			clear()	
-		clear()
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
+		clear()		
 		return self.tables(self) 
 	
 	def shuffle(self):
@@ -74,13 +60,4 @@ class main(object):
 				i['cardsHand'].append(card)
 				card['status']=i['name']
 
-		
-
 print(main().tables())
-
-
-
-
-
-		
-

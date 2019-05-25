@@ -2,12 +2,14 @@ import os
 import sys
 clear = lambda: os.system('cls')
 
-class actionsTable():
+class ActionsTable():
 	global mgs
+
 	mgs={"selectCard" : "please selectCard of {} for {} a card write the number of card",
 	"pass" : "your a passed",
 	"dontCard" : "do you havent this card"
 	}
+
 	def __init__(self, player, table):
 		self.player = player
 		self.table = table
@@ -35,8 +37,9 @@ class actionsTable():
 				print("ok this take is working")
 				
 				return clear()
+
 		print('check your selectCard taked')
-		return self.take(self)
+		return self.take(self,cardSelectd=None)
 		
 	def passe(self,cardSelectd):
 		
@@ -51,8 +54,9 @@ class actionsTable():
 				print("ok this trow shit is working")
 
 				return clear()
+				
 		print('check your selectCard passed')
-		return self.passe(self)
+		return self.passe(self,cardSelectd=None)
 
 	def contructor(self,cardSelectd):
 		
@@ -80,4 +84,4 @@ class actionsTable():
 				return 
 
 		print('check your selectCard')
-		return self.contructor(self)
+		return self.contructor(self,cardSelectd=None)

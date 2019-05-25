@@ -1,19 +1,19 @@
 from random import *
-class card():
+
+class Card():
 	
 	def createCards(self):
-		heart=chr(3)
-		diamons =chr(4)
+		heart = chr(3)
+		diamons = chr(4)
 		club = chr(5)
-		spade =chr(6)
+		spade = chr(6)
 		cards = [[heart,diamons,club,spade],['a',2,3,4,5,6,7,8,9,10,'j','q','k']]
 		return cards
 
-
-class deck(object):
+class Deck(object):
 	cards = None
 	def __init__(self):
-		self.cards = card().createCards()
+		self.cards = Card().createCards()
 
 	"""docstring for deck"""
 	def createDeck(self):

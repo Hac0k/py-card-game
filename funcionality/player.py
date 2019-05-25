@@ -1,5 +1,6 @@
 from random import *
-class player(object):
+
+class Player(object):
 
 	"""docstring for player"""
 	playername = None

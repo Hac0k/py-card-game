@@ -1,5 +1,6 @@
 from funcionality.deck import *
 from funcionality.player import *
+
 class Setting(object):
 	"""docstring for settingg"""
 	global setting,players,msg
@@ -19,15 +20,11 @@ class Setting(object):
 			if user.isdigit():
 				print (msg['troll'],msg['nameIncorrect'])
 				self.createPlayers()
-			players.append(player(user).players(True))
+			players.append(Player(user).players(True))
 			self.createAiPlayers()				
 		except ValueError:
 			print(msg['troll'],msg['nameIncorrect'])
 			self.createPlayers()
-
-
-
-
 
 	def createAiPlayers(self,numberPlayers=None):
 		try:
@@ -50,17 +47,15 @@ class Setting(object):
 				else:
 					return self.createAiPlayers(numberPlayers=4)
 			for i in range(int(numberPlayers)-1):
-				players.append(player(None).players())
+				players.append(Player(None).players())
 			setting['players'] = players
 		except ValueError:
 			print(msg['troll'])
 			return self.createAiPlayers(numberPlayers=4)
 
-	
-
 	def settings(self):
 		self.createPlayers()
-		setting['deck']=deck().shuffle()
-		setting['noPlayers']=len(players)
-		setting['table']=[]
+		setting['deck'] = Deck().shuffle()
+		setting['noPlayers'] = len(players)
+		setting['table'] = []
 		return setting

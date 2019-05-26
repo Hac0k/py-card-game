@@ -11,3 +11,8 @@ python 3
 ```bash
 python Game.py 
 ```
+
+## In the inside of the game you have 3 option to play 
+```
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png
+```

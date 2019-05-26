@@ -6,7 +6,7 @@ class Point(object):
 		
 	def points(self):
 		return self.cards()
-		
+
 	def cards(self):
 		listsOfPlayer =[]
 		lists = []
@@ -24,3 +24,4 @@ class Point(object):
 			if sortedlist[0] == lists[x][0]:
 				return print("you won't")
 		return print("you lose ")
+		

@@ -105,13 +105,11 @@ def welcomemsj():
 		return clear()
 
 def showCompleteTable(table,player):
-	print(player)
-	print(table)
-
 	cardsPlayers = player['cardsHand']
 	namePlayer = player['name']
 
 	print(showTable(table,'table'),showTable(cardsPlayers,'cardsPlayers',namePlayer))
+
 def showTable(table, name, namePlayer=None):
 	line =("\n"*2)
 	spaces = (" "*10)

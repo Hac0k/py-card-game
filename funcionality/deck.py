@@ -3,11 +3,7 @@ from random import *
 class Card():
 	
 	def createCards(self):
-		heart = chr(3)
-		diamons = chr(4)
-		club = chr(5)
-		spade = chr(6)
-		cards = [[heart,diamons,club,spade],['a',2,3,4,5,6,7,8,9,10,'j','q','k']]
+		cards = [['♠', '♦', '♥', '♣'],['a',2,3,4,5,6,7,8,9,10,'j','q','k']]
 		return cards
 
 class Deck(object):

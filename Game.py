@@ -16,11 +16,11 @@ class main(object):
 	print(game())
 	settings = Setting().settings()
 	clear()
-	# [{'name':playerName,'status':'ai','cardsHand':[],'deckplayer':[],'statusShuffle':False,}]		
+	# List of the dictionaries of the players
 	players = settings['players']
-	# templateDict ={'number':number,'simbol':simbol,'status':'maindeck','value':(cards[1].index(number))+1,'img':None}
+	# dictionary of the deck 
 	deck = settings['deck']
-	# [{'number':number,'simbol':simbol,'status':'maindeck','value':(cards[1].index(number))+1,'img':None}]
+	# list of dictionaries to represent the table 
 	table = settings['table']
 	
 	def tables(self):
@@ -38,13 +38,15 @@ class main(object):
 					print(msg['actions'])
 					action = input()
 					ActionsTable(players[x],table).actions(int(action))
+				
 				else:
 					ia_actions(players[x],table)
 				print(showCompleteTable(table,players[0]))
-		#		print(len(players[0]['cardsHand']))
+				print(len(players[0]['cardsHand']))
+
 			clear()	
 			print(showCompleteTable(table,players[0]))
-		#	print(len(players[0]['cardsHand']))		
+			print(len(players[0]['cardsHand']))		
 		return self.tables() 
 	
 	def shuffle(self):

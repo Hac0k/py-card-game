@@ -26,6 +26,7 @@ def cards(decks):
 	lines = [lists[i].splitlines() for i in range(len(lists))]
 
 	return lines
+	
 def game():
 	game_definition ="""
 Casino, often incorrectly spelled Cassino, probably dates to at least the seventeenth century. One of the first references in English is found in "The Hoyle Games", edited by Charles Jones, London, 1808. But several very similar games are described in the first manuals in French and German, such as Papillon and Callabra.
@@ -88,8 +89,10 @@ When there are several cards on the table, it is often possible to calculate the
 	print(welcomemsj())
 	print(game_definition)
 	print('write anything for exit')
+	
 	if input():
 		return clear() 
+
 def welcomemsj():
 	print("""
 		This is a game to casino 
@@ -101,6 +104,7 @@ def welcomemsj():
 
 		write anything for exit
 		""")
+
 	if input():
 		return clear()
 
@@ -115,5 +119,6 @@ def showTable(table, name, namePlayer=None):
 	spaces = (" "*10)
 	print("{}{}{}{}{}".format(line,spaces,name,spaces,namePlayer,spaces,line))
 	elementsTable = cards(table) 
+
 	for l in zip(*elementsTable):
 		print(*l, sep='')

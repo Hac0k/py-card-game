@@ -5,11 +5,13 @@ class Setting(object):
 	"""docstring for settingg"""
 	global setting,players,msg
 	msg={'numberIncorrect':"The number is more big than 4 or 0 choice AUTOSELECT 4, do you reselection of players? Y or N",
-	'howplayer':"how many player 2,3,4",
-	'autoselect':'-AUTOSELECT 4',
-	'troll':"u cant troll ",
-	'numberFalse':"me give a number",
-	'nameIncorrect':"give me a  name "}
+		'howplayer':"how many player 2,3,4",
+		'autoselect':'-AUTOSELECT 4',
+		'troll':"u cant troll ",
+		'numberFalse':"me give a number",
+		'nameIncorrect':"give me a  name "
+		}
+
 	setting={}
 	players=[]
 

@@ -13,6 +13,3 @@ class Player(object):
 		playerName =  self.playername if self.playername else choice(names)
 		ai = 'player'if boolean else 'ai'
 		return {'name':playerName,'status':ai,'cardsHand':[],'deckplayer':[],'statusShuffle':False}		
-
-
-		

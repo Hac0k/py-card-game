@@ -26,23 +26,26 @@ class main(object):
 	def tables(self):
 		self.shuffle()
 		if (self.shuffle()):
-			return 'close game'
+			return Point(players).cards();
+
 		print(showCompleteTable(table,players[0]))
 
-		while len(players[0]['cardsHand']) >=1:
+		while len(players[0]['cardsHand']) > 0:
+			action = None
 			for x in range(len(players)):
-				print(msg['selectAction'])
-				print(msg['actions'])
-				action = input()
 				if players[x]['status'] == 'player':
+					print(msg['selectAction'])
+					print(msg['actions'])
+					action = input()
 					ActionsTable(players[x],table).actions(int(action))
 				else:
-					iaActions(players[x],table)
+					ia_actions(players[x],table)
 				print(showCompleteTable(table,players[0]))
-				print(len(players[0]['cardsHand']))
+		#		print(len(players[0]['cardsHand']))
 			clear()	
-		clear()		
-		return self.tables(self) 
+			print(showCompleteTable(table,players[0]))
+		#	print(len(players[0]['cardsHand']))		
+		return self.tables() 
 	
 	def shuffle(self):
 		if(len(deck) == 0):

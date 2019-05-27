@@ -38,9 +38,9 @@ class main(object):
 					print(msg['actions'])
 					action = input()
 					ActionsTable(players[x],table).actions(int(action))
-				
 				else:
 					ia_actions(players[x],table)
+
 				print(showCompleteTable(table,players[0]))
 				print(len(players[0]['cardsHand']))
 

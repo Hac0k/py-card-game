@@ -28,32 +28,32 @@ class Setting(object):
 			print(msg['troll'],msg['nameIncorrect'])
 			self.createPlayers()
 
-	def createAiPlayers(self,numberPlayers=None):
+	def createAiPlayers(self,number_players=None):
 		try:
 			print(msg['howplayer'])
-			numberPlayers=input()
-			int(numberPlayers)
-			if int(numberPlayers) >=5 or int(numberPlayers) == 0:
+			number_players = input()
+			int(number_players)
+			if int(number_players) >=5 or int(number_players) == 0:
 				print(msg['numberIncorrect'])
-				entry=input()
+				entry = input()
 				if (entry == "yes" or entry == "y"):
 					print(msg['howplayer'])
 					try:
 						number=input()
 						int(number-1)
-						numberPlayers = number if number > 4 or number != 0 else 4
-						return self.createAiPlayers(numberPlayers)
+						number_players = number if number > 4 or number != 0 else 4
+						return self.createAiPlayers(number_players)
 					except ValueError:
 						print(msg['troll'],msg['numberFalse'],msg['autoselect'])
-						return self.createAiPlayers(numberPlayers=4)
+						return self.createAiPlayers(number_players=4)
 				else:
-					return self.createAiPlayers(numberPlayers=4)
-			for i in range(int(numberPlayers)-1):
+					return self.createAiPlayers(number_players=4)
+			for i in range(int(number_players)-1):
 				players.append(Player(None).players())
 			setting['players'] = players
 		except ValueError:
 			print(msg['troll'])
-			return self.createAiPlayers(numberPlayers=4)
+			return self.createAiPlayers(number_players=4)
 
 	def settings(self):
 		self.createPlayers()

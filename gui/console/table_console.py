@@ -109,15 +109,15 @@ def welcomemsj():
 		return clear()
 
 def showCompleteTable(table,player):
-	cardsPlayers = player['cardsHand']
-	namePlayer = player['name']
+	cards_players = player['cardsHand']
+	name_player = player['name']
 
-	print(showTable(table,'table'),showTable(cardsPlayers,'cardsPlayers',namePlayer))
+	print(showTable(table,'table'),showTable(cards_players,'cards_players',name_player))
 
-def showTable(table, name, namePlayer=None):
+def showTable(table, name, name_player=None):
 	line =("\n"*2)
 	spaces = (" "*10)
-	print("{}{}{}{}{}".format(line,spaces,name,spaces,namePlayer,spaces,line))
+	print("{}{}{}{}{}".format(line,spaces,name,spaces,name_player,spaces,line))
 	elementsTable = cards(table) 
 
 	for l in zip(*elementsTable):

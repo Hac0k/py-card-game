@@ -15,12 +15,15 @@ class Deck(object):
 	def createDeck(self):
 		cards = self.cards
 		deck = []
+
 		for simbol in cards[0]:
 			for number in cards[1]:
-				templateDict ={'number':number,'simbol':simbol,'status':'maindeck','value':(cards[1].index(number))+1,'img':None}
-				deck.append(templateDict)
+				template_dict ={'number':number,'simbol':simbol,'status':'maindeck','value':(cards[1].index(number))+1,'img':None}
+				deck.append(template_dict)
+
 		return deck
 
 	def shuffle(self):
 		deck = self.createDeck()
+		
 		return sample(deck,len(deck))

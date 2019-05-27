@@ -8,20 +8,25 @@ class Point(object):
 		return self.cards()
 
 	def cards(self):
-		listsOfPlayer =[]
+		lists_of_player =[]
 		lists = []
+		players = []
+
 		for x in range(len(self.players)):
 			player = self.players[x]['name']
-			playercards = self.players[x]['deckplayer']
-			listsOfPlayer.append(len(playercards))
-			lists.append([player,len(playercards)])
+			player_cards = self.players[x]['deckplayer']
+			players.append(player)
+			lists_of_player.append(len(player_cards))
+			lists.append([player,len(player_cards)])
 
-		return print("you won't")
+		return self.Greatesthan(players,lists_of_player,lists)
 
-	def Greatesthan(self, listsOfPlayer):
-		sortedlist = sorted(listsOfPlayer)
-		for x in range(listsOfPlayer):
-			if sortedlist[0] == lists[x][0]:
-				return print("you won't")
-		return print("you lose ")
+	def Greatesthan(self,players, lists_of_player, lists):
+		sorted_list = sorted(lists_of_player,reverse = True)
+
+		for x in range(len(lists_of_player)):
+			if sorted_list[0] == lists[x][1]:
+				return print("you won {}".format(players[x]))
+				
+		return print("you lose")
 		

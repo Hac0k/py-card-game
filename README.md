@@ -45,8 +45,7 @@ Example
 
 please write a number of action
 1-take, 2-passe, 3-contructor
-```
-```
+
 1-take: if you have a card you can take a card of the table 
 
 2-passe:  you can throw a card to the table 

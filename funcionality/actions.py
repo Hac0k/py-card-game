@@ -60,15 +60,15 @@ class ActionsTable():
 		return self.take(card_selectd = None,ia = False)
 	
 	def helper_take_constution(self,constrution,card_selectd):
-		card_of_constrution = constrution[0]['value'] + constrution[1]['value']
+		cards_of_constrution = constrution['cards'][0]['value'] + constrution['cards'][1]['value']
 		
 		for card in range(len(self.table)):
-			if card_selectd == card_of_constrution:
+			if card_selectd == cards_of_constrution:
 				for x in range(len(constrution)):
-					self.player['deckplayer'].append(self.table.pop(constrution[x]))
+					self.player['deckplayer'].append(self.table.pop(constrution['cards'][x]))
 
 			for user_card in range(len(self.player['cardsHand'])):
-				if card_selectd == card_of_constrution:
+				if card_selectd == cards_of_constrution:
 					self.player['deckplayer'].append(self.player['cardsHand'].pop(user_card))
 					break; # This break for stop the cycle but is no necessary return 
 
@@ -99,7 +99,7 @@ class ActionsTable():
 		
 		if len(self.table) <= 0:
 			print("the table is empty u cant only pass")
-			return self.passe(card_selectd = None,ia = False)
+			return self.passe(card_selectd = None)
 			
 		if not card_selectd:
 			print(mgs['selectCard'].format('your deck','contructor'))
@@ -122,12 +122,12 @@ class ActionsTable():
 
 				for cardOfTable in range(len(self.table)):
 					if table_card == self.table[cardOfTable]['value']:
-						temp_table_card = self.table.pop(card)
+						temp_table_card = self.table.pop(cardOfTable)
 						break;
-				self.table.append([temp_table_card,temp_player_card])
+				self.table.append({'type':'constrution','value':temp_table_card['value']+temp_player_card['value'],'cards':[temp_table_card,temp_player_card]})
 				return;
 		print('check your selectCard')
-		return self.contructor(card_selectd,ia = False)
+		return self.contructor(card_selectd=None)
 
 	def check_if_card_in_hand(self,card_selectd):
     		

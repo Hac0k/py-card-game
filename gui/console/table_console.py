@@ -19,8 +19,8 @@ def cards(decks):
 """,[]
 
 	for x in decks:
-		if isinstance(x, list):
-			lists.append(const.format(x[0]['value'],x[0]['simbol'],x[1]['value'],x[1]['simbol'],(x[0]['value']+x[1]['value'])))
+		if isinstance(x, dict) and x['type'] == 'constrution':
+			lists.append(const.format(x['cards'][0]['value'],x['cards'][0]['simbol'],x['cards'][1]['value'],x['cards'][1]['simbol'],x['value']))
 		else:
 			lists.append(templ.format(x['value'],x['simbol']))
 	lines = [lists[i].splitlines() for i in range(len(lists))]
@@ -122,3 +122,11 @@ def showTable(table, name, name_player=None):
 
 	for l in zip(*elementsTable):
 		print(*l, sep='')
+
+
+def presentation_players(players):
+	line =("\n"*2)
+	spaces = (" "*2)
+
+	for x in range(len(players)):
+		print("{}{} {}{}".format(spaces,players[x]['name'],len(players[x]['cardsHand']),spaces))

@@ -27,8 +27,10 @@ class main(object):
 		self.shuffle()
 		if (self.shuffle()):
 			return Point(players).points();
-
+		clear()
+		print(presentation_players(players))
 		print(showCompleteTable(table,players[0]))
+		
 
 		while len(players[0]['cardsHand']) > 0:
 			action = None
@@ -40,11 +42,13 @@ class main(object):
 					ActionsTable(players[x],table).actions(int(action))
 				else:
 					ia_actions(players[x],table)
-
+				clear()
+				print(presentation_players(players))
 				print(showCompleteTable(table,players[0]))
 				print(len(players[0]['cardsHand']))
 
-			clear()	
+			clear()
+			print(presentation_players(players))
 			print(showCompleteTable(table,players[0]))
 			print(len(players[0]['cardsHand']))		
 		return self.tables() 

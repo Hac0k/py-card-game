@@ -18,7 +18,7 @@ class Deck(object):
 
 		for simbol in cards[0]:
 			for number in cards[1]:
-				template_dict ={'number':number,'simbol':simbol,'status':'maindeck','value':(cards[1].index(number))+1,'img':None}
+				template_dict ={'number':number,'simbol':simbol,'status':'maindeck','value':(cards[1].index(number))+1,'img':None,'type':'card'}
 				deck.append(template_dict)
 
 		return deck

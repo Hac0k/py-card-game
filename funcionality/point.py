@@ -1,18 +1,15 @@
-class Point(object):
-	global points,players
-	
-	points = [];
-	players = []
+class Point():
 
 	def __init__(self,players):
+		self.all_points = []
 		self.players = players
-		
+
 	def points(self):
 		for x in range(len(self.players)):
 			if len(self.players[x]['deckplayer']) >= 28:
-				points.append([self.players[x]['name'],3])
+				self.all_points.append([self.players[x]['name'],3])
 			else:
-				points.append([self.players[x]['name'],0])
+				self.all_points.append([self.players[x]['name'],0])
 		return self.spadesCounts()
 
 
@@ -21,33 +18,33 @@ class Point(object):
 			spadescounter = 0;
 
 			#coounter of the cards 
-			for cards in range(self.players[x]['deckplayer']):
-				if cards['simbol'] == '♠':
+			for cards in range(len(self.players[x]['deckplayer'])):
+				if self.players[x]['deckplayer'][cards]['simbol'] == '♠':
 					spadescounter+=1
 			
-			if spadesCounter >= 7:
-				for x in range(len(points)):
-					if self.players[x]['name'] == points[x][0]:
-						points[x][1]+=1
+			if spadescounter >= 7:
+				for x in range(len(self.all_points)):
+					if self.players[x]['name'] == self.all_points[x][0]:
+						self.all_points[x][1]+=1
 					break	
-			return
+			return self.asesCounts()
 		return self.asesCounts()
-	
+
 	def asesCounts(self):
 		for x in range(len(self.players)):
 			asescounter = 0;	
 
 			#coounter of the cards 
-			for cards in range(self.players[x]['deckplayer']):
-				if cards['number'] == 'a':
+			for cards in range(len(self.players[x]['deckplayer'])):
+				if self.players[x]['deckplayer'][cards]['number'] == 'a':
 					asescounter+=1
 			
 			if asescounter >= 4:
-				for x in range(len(points)):
-					if self.players[x]['name'] == points[x][0]:
-						points[x][1]+=1
+				for x in range(len(self.all_points)):
+					if self.players[x]['name'] == self.all_points[x][0]:
+						self.all_points[x][1]+=1
 					break	
-			return
+			return self.grancasinocount()
 		return self.grancasinocount()
 
 	def grancasinocount(self):
@@ -55,34 +52,35 @@ class Point(object):
 			grancasinocount = 0;	
 
 			#coounter of the cards 
-			for cards in range(self.players[x]['deckplayer']):
-				if cards['number'] == '10':
+			for cards in range(len(self.players[x]['deckplayer'])):
+				if self.players[x]['deckplayer'][cards]['number'] == '10':
 					grancasinocount+=1
 			
 			if grancasinocount >= 4:
-				for x in range(len(points)):
-					if self.players[x]['name'] == points[x][0]:
-						points[x][1]+=2
+				for x in range(len(self.all_points)):
+					if self.players[x]['name'] == self.all_points[x][0]:
+						self.all_points[x][1]+=2
 					break	
-			return
-		return
+			return self.smallcasino()
+		return self.smallcasino()
 
 	def smallcasino(self):
 		for x in range(len(self.players)):
 			smallcasino = 0;	
 
 			#coounter of the cards 
-			for cards in range(self.players[x]['deckplayer']):
-				if cards['number'] == '10':
+			for cards in range(len(self.players[x]['deckplayer'])):
+				if self.players[x]['deckplayer'][cards]['number'] == '10':
 					smallcasino+=1
 			
 			if smallcasino >= 4:
-				for x in range(len(points)):
-					if self.players[x]['name'] == points[x][0]:
-						points[x][1]+=2
+				for x in range(len(self.all_points)):
+					if self.players[x]['name'] == self.all_points[x][0]:
+						self.all_points[x][1]+=2
 					break	
 			return
-		return print(points)
+		print(self.all_points)
+		return 
 
 
 	def cards(self):
@@ -92,18 +90,17 @@ class Point(object):
 		for x in range(len(self.players)):
 			player = self.players[x]['name']
 			player_cards = self.players[x]['deckplayer']
-			players.append(player)
+			self.players.append(player)
 			lists_of_player.append(len(player_cards))
 			lists.append([player,len(player_cards)])
 
-		return self.Greatesthan(players,lists_of_player,lists)
+		return Greatesthan(self.players,lists_of_player,lists)
 
-	def Greatesthan(self,players, lists_of_player, lists):
+	def Greatesthan(self, lists_of_player, lists):
 		sorted_list = sorted(lists_of_player,reverse = True)
 
 		for x in range(len(lists_of_player)):
 			if sorted_list[0] == lists[x][1]:
-				return points.append(players[x]);
+				return self.all_points.append(self.players[x]);
 
 		return;
-	

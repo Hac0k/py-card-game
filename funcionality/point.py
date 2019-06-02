@@ -1,16 +1,93 @@
-
 class Point(object):
-	"""docstring for point"""
+	global points,players
+	
+	points = [];
+	players = []
+
 	def __init__(self,players):
 		self.players = players
 		
 	def points(self):
-		return self.cards()
+		for x in range(len(self.players)):
+			if len(self.players[x]['deckplayer']) >= 28:
+				points.append([self.players[x]['name'],3])
+			else:
+				points.append([self.players[x]['name'],0])
+		return self.spadesCounts()
+
+
+	def spadesCounts(self):
+		for x in range(len(self.players)):
+			spadescounter = 0;
+
+			#coounter of the cards 
+			for cards in range(self.players[x]['deckplayer']):
+				if cards['simbol'] == '♠':
+					spadescounter+=1
+			
+			if spadesCounter >= 7:
+				for x in range(len(points)):
+					if self.players[x]['name'] == points[x][0]:
+						points[x][1]+=1
+					break	
+			return
+		return self.asesCounts()
+	
+	def asesCounts(self):
+		for x in range(len(self.players)):
+			asescounter = 0;	
+
+			#coounter of the cards 
+			for cards in range(self.players[x]['deckplayer']):
+				if cards['number'] == 'a':
+					asescounter+=1
+			
+			if asescounter >= 4:
+				for x in range(len(points)):
+					if self.players[x]['name'] == points[x][0]:
+						points[x][1]+=1
+					break	
+			return
+		return self.grancasinocount()
+
+	def grancasinocount(self):
+		for x in range(len(self.players)):
+			grancasinocount = 0;	
+
+			#coounter of the cards 
+			for cards in range(self.players[x]['deckplayer']):
+				if cards['number'] == '10':
+					grancasinocount+=1
+			
+			if grancasinocount >= 4:
+				for x in range(len(points)):
+					if self.players[x]['name'] == points[x][0]:
+						points[x][1]+=2
+					break	
+			return
+		return
+
+	def smallcasino(self):
+		for x in range(len(self.players)):
+			smallcasino = 0;	
+
+			#coounter of the cards 
+			for cards in range(self.players[x]['deckplayer']):
+				if cards['number'] == '10':
+					smallcasino+=1
+			
+			if smallcasino >= 4:
+				for x in range(len(points)):
+					if self.players[x]['name'] == points[x][0]:
+						points[x][1]+=2
+					break	
+			return
+		return print(points)
+
 
 	def cards(self):
 		lists_of_player =[]
 		lists = []
-		players = []
 
 		for x in range(len(self.players)):
 			player = self.players[x]['name']
@@ -26,7 +103,7 @@ class Point(object):
 
 		for x in range(len(lists_of_player)):
 			if sorted_list[0] == lists[x][1]:
-				return print("you won {}".format(players[x]))
-				
-		return print("you lose")
-		
+				return points.append(players[x]);
+
+		return;
+	

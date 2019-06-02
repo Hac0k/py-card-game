@@ -26,7 +26,7 @@ class main(object):
 	def tables(self):
 		self.shuffle()
 		if (self.shuffle()):
-			return Point(players).cards();
+			return Point(players).points();
 
 		print(showCompleteTable(table,players[0]))
 

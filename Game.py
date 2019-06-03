@@ -42,6 +42,7 @@ class main(object):
 					ActionsTable(players[x],table).actions(int(action))
 				else:
 					ia_actions(players[x],table)
+					
 				clear()
 				print(presentation_players(players))
 				print(showCompleteTable(table,players[0]))

@@ -25,5 +25,5 @@ class Deck(object):
 
 	def shuffle(self):
 		deck = self.createDeck()
-		
 		return sample(deck,len(deck))
+		

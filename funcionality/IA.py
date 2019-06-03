@@ -34,8 +34,7 @@ def helper_take_constution(table,player,constrution,card_selectd):
 			if card_selectd == card_of_constrution:
 				player['deckplayer'].append(player['cardsHand'].pop(user_card))
 				break; # This break for stop the cycle but is no necessary return 
-				
-		
+						
 def check_if_card_in_hand(player,card_selectd):
 		
 	for card in range(len(player['cardsHand'])):	

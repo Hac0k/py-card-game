@@ -32,7 +32,11 @@ class ActionsTable():
 			
 		if not card_selectd and ia == False:
 			print(mgs['selectCard'].format('table','take'))
-			card_selectd = int(input())
+			try:
+				card_selectd = int(input())
+			except ValueError:
+				self.take(card_selectd = None,ia = False)
+			
 
 		# this for is for check card in the table
 		for card in range(len(self.table)):
@@ -41,7 +45,7 @@ class ActionsTable():
 				self.player['deckplayer'].append(self.table.pop(card))
 
 				if ia == False and not self.check_if_card_in_hand(card_selectd):
-					if isinstance(self.table[card], list): 
+					if self.table[card]['type'] == 'constrution': 
 						self.helper_take_constution(self.table[card],card_selectd)
 					else:	
 						print("You no have this card ")

@@ -8,7 +8,7 @@ def ia_actions(player,table):
 		card_selectd = card['value']
 		
 		if card['type'] == 'constrution':
-			helper_take_constution(table,player,card,card_selectd)	
+    			helper_take_constution(table,player,card,card_selectd)	
 		
 		# Check if have a selectable card of the table 
 		count=0

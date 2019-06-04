@@ -7,8 +7,8 @@ def ia_actions(player,table):
 		card = choice(table)
 		card_selectd = card['value']
 		
-		if isinstance(card,list):
-			helper_take_constution(table,player,card,card_selectd)	
+		if card['type'] == 'constrution':
+    			helper_take_constution(table,player,card,card_selectd)	
 		
 		# Check if have a selectable card of the table 
 		count=0
@@ -25,7 +25,7 @@ def ia_actions(player,table):
 def helper_take_constution(table,player,constrution,card_selectd):
 	card_of_constrution = constrution[0]['value'] + constrution[1]['value']
 	
-	for card in range(len(self.table)):
+	for card in range(len(table)):
 		if card_selectd == card_of_constrution:
 			for x in range(len(constrution)):
 				player['deckplayer'].append(table.pop(constrution[x]))

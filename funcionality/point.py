@@ -1,3 +1,5 @@
+clear = lambda: os.system('cls')
+
 class Point():
 
 	def __init__(self,players):
@@ -67,5 +69,7 @@ class Point():
 			
 			all_points[x][1]+=asescounter
 
-		print(all_points)
-		
+		clear()
+		print("players points")
+		for x in range(len(all_points)):
+			print("{} {}".format(all_points[x][0],all_points[x][1]))

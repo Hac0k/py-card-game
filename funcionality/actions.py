@@ -64,7 +64,7 @@ class ActionsTable():
 		return self.take(card_selectd = None,ia = False)
 	
 	def helper_take_constution(self,constrution,card_selectd):
-		cards_of_constrution = constrution['cards'][0]['value'] + constrution['cards'][1]['value']
+		cards_of_constrution = constrution['value']
 		
 		for card in range(len(self.table)):
 			if card_selectd == cards_of_constrution:
@@ -124,12 +124,14 @@ class ActionsTable():
 					print('The constrution is more 14 please try a new contructions ')
 					return self.contructor(card_selectd=None) 
 
-				for cardOfTable in range(len(self.table)):
-					if table_card == self.table[cardOfTable]['value']:
-						temp_table_card = self.table.pop(cardOfTable)
-						break;
-				self.table.append({'type':'constrution','value':temp_table_card['value']+temp_player_card['value'],'cards':[temp_table_card,temp_player_card]})
-				return;
+				if(self.check_if_card_in_table(table_card)):
+    					
+					for cardOfTable in range(len(self.table)):
+						if table_card == self.table[cardOfTable]['value']:
+							temp_table_card = self.table.pop(cardOfTable)
+							break;
+					self.table.append({'type':'constrution','value':temp_table_card['value']+temp_player_card['value'],'cards':[temp_table_card,temp_player_card]})
+					return;
 		print('check your selectCard')
 		return self.contructor(card_selectd=None)
 
@@ -139,5 +141,11 @@ class ActionsTable():
 			if self.player['cardsHand'][card]['value'] == card_selectd:
 				return True
 		return False
-
+		
+	def check_if_card_in_table(self,card_selectd):
+    		
+		for card in range(len(self.table)):
+			if self.table[card]['value'] == card_selectd:
+				return True
+		return False
 

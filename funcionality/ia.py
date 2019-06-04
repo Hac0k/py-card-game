@@ -23,12 +23,12 @@ def ia_actions(player,table):
 	ActionsTable(player,table).actions(2, value_card_player, ia = True)
 
 def helper_take_constution(table,player,constrution,card_selectd):
-	card_of_constrution = constrution[0]['value'] + constrution[1]['value']
+	card_of_constrution = constrution['value']
 	
 	for card in range(len(table)):
 		if card_selectd == card_of_constrution:
 			for x in range(len(constrution)):
-				player['deckplayer'].append(table.pop(constrution[x]))
+				player['deckplayer'].append(table.pop(constrution['cards'][x]))
 
 		for user_card in range(len(player['cardsHand'])):
 			if card_selectd == card_of_constrution:

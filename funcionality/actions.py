@@ -76,7 +76,7 @@ class ActionsTable():
 		for card in range(len(self.table)):
 			if card_selectd == cards_of_constrution:
 				for x in range(len(constrution)):
-					self.player['deckplayer'].append(constrution['cards'].pop([x]))
+					self.player['deckplayer'].append(constrution['cards'].pop(x))
 
 			for user_card in range(len(self.player['cardsHand'])):
 				if card_selectd == cards_of_constrution:

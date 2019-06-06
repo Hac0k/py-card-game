@@ -8,11 +8,8 @@ import sys
 clear = lambda: os.system('cls')
 
 class main(object):
-	global msg,settings,players,deck,table
-	msg={
-	'selectAction':'please write a number of action',
-	'actions':'1-take, 2-passe, 3-contructor',
-	}
+	global settings,players,deck,table
+
 	print(game())
 	settings = Setting().settings()
 	clear()
@@ -36,10 +33,7 @@ class main(object):
 			action = None
 			for x in range(len(players)):
 				if players[x]['status'] == 'player':
-					print(msg['selectAction'])
-					print(msg['actions'])
-					action = input()
-					ActionsTable(players[x],table).actions(int(action))
+					ActionsTable(players[x],table).actions()
 				else:
 					ia_actions(players[x],table)
 					

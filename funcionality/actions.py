@@ -7,14 +7,21 @@ class ActionsTable():
 
 	mgs={"selectCard" : "please selectCard of {} for {} a card write the number of card",
 		"pass" : "your a passed",
-		"dontCard" : "do you havent this card"
+		"dontCard" : "do you havent this card",
+		'selectAction':'please write a number of action',
+		'actions':'1-take, 2-passe, 3-contructor',
 	}
 
 	def __init__(self, player, table):
 		self.player = player
 		self.table = table
 
-	def actions(self,action,card_selectd=None,ia=False):
+	def actions(self,action=None,card_selectd=None,ia=False):
+		if not action:
+			print(mgs['selectAction'])
+			print(mgs['actions'])
+			action = int(input())
+
 		if action == 1:
 			return self.take(card_selectd,ia)
 		elif action == 2:
@@ -69,7 +76,7 @@ class ActionsTable():
 		for card in range(len(self.table)):
 			if card_selectd == cards_of_constrution:
 				for x in range(len(constrution)):
-					self.player['deckplayer'].append(self.table.pop(constrution['cards'][x]))
+					self.player['deckplayer'].append(constrution['cards'].pop([x]))
 
 			for user_card in range(len(self.player['cardsHand'])):
 				if card_selectd == cards_of_constrution:

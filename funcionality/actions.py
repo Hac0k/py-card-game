@@ -27,7 +27,7 @@ class ActionsTable():
 		elif action == 2:
 			return self.passe(card_selectd,ia)
 		elif action == 3:
-			return self.contructor(card_selectd,ia)
+			return self.contructor(card_selectd)
 		else:
 			return self.passe(card_selectd,ia)
 
@@ -44,7 +44,6 @@ class ActionsTable():
 			except ValueError:
 				self.take(card_selectd = None,ia = False)
 			
-
 		# this for is for check card in the table
 		for card in range(len(self.table)):
 
@@ -72,11 +71,13 @@ class ActionsTable():
 	
 	def helper_take_constution(self,constrution,card_selectd):
 		cards_of_constrution = constrution['value']
-		
+		emptyList = []
+
 		for card in range(len(self.table)):
 			if card_selectd == cards_of_constrution:
 				for x in range(len(constrution)):
-					self.player['deckplayer'].append(constrution['cards'].pop(x))
+					self.player['deckplayer'].append(constrution['cards'].pop(0))
+					emptyList.append(table.pop(card_selectd))
 
 			for user_card in range(len(self.player['cardsHand'])):
 				if card_selectd == cards_of_constrution:
@@ -106,7 +107,7 @@ class ActionsTable():
 		print('check your selectCard passed')
 		return self.passe(card_selectd = None, ia = False)
 
-	def contructor(self,card_selectd,ia):
+	def contructor(self,card_selectd):
 		
 		if len(self.table) <= 0:
 			print("the table is empty u cant only pass")
@@ -155,4 +156,3 @@ class ActionsTable():
 			if self.table[card]['value'] == card_selectd:
 				return True
 		return False
-

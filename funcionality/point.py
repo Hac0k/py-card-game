@@ -1,3 +1,5 @@
+import os
+import sys
 clear = lambda: os.system('cls')
 
 class Point():

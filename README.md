@@ -1,15 +1,15 @@
 # py-card-game
  This is a casino game in python 
  ```
- You configury your game with  
+ You configuring your game with  
  
- - you can select your name or random names 
+ - you can select your name or random name
+ - all others players the names is random
  - 2, 3 or 4 players
 
- The game display a list of the number of rules, also you can 
+The game shows a list of rules, also ways to play 
 
  ``` 
-
 ## To run the project to need 
 ```
 python 3 
@@ -29,7 +29,7 @@ Example
           table          None
 
         ----------      ----------      ----------      ----------
-        | 13  ═  |      | 3  ╚  |       | 4  ╚  |       | 12  ╝  |
+        | 13   ♠ |      | 3  ♦   |      | 4  ♥   |      | 12  ♣  |
         |        |      |        |      |        |      |        |
         |        |      |        |      |        |      |        |
         ----------      ----------      ----------      ----------
@@ -38,7 +38,7 @@ Example
           cardsPlayers          wilson
 
         ----------      ----------      ----------      ----------
-        | 9  ╚  |       | 3  ╝  |       | 10  ╝  |      | 3  ═  |
+        | 9  ♦  |       | 3  ♠   |      | 10  ♣  |     | 3   ♣ |
         |        |      |        |      |        |      |        |
         |        |      |        |      |        |      |        |
         ----------      ----------      ----------      ----------
@@ -50,14 +50,19 @@ please write a number of action
 
 2-passe:  you can throw a card to the table 
 
-3-contructor: you can doing a contrution of the cards
+3-contructor: you can doing a constrution of the cards
 
-	Example:
+	Example of the construtions:
         -----------------
-	| 13  ═  | 1 ═  |
+	| 13  ♠  | 1 ♣  |
 	|        |      |
-	|       14 ═    |
+	|       14      |
 	---------|-------
 
-if you don't selected a option by default is pass
+```
+## Notes 
+```
+Identified bugs:
+
+.- You can not make a construction from another
 ```

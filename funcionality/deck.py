@@ -10,8 +10,7 @@ class Deck(object):
 	cards = None
 	def __init__(self):
 		self.cards = Card().createCards()
-
-	"""docstring for deck"""
+		
 	def createDeck(self):
 		cards = self.cards
 		deck = []

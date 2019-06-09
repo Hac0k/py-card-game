@@ -5,10 +5,11 @@ clear = lambda: os.system('cls')
 class ActionsTable():
 	global mgs
 
-	mgs={"selectCard" : "please selectCard of {} for {} a card write the number of card",
-		"pass" : "your a passed",
-		"dontCard" : "do you havent this card",
-		'selectAction':'please write a number of action',
+	mgs={"select_card" : "Please select card of {} for {} a card write the number of card",
+		"pass" : "Your a passed",
+		"dontCard" : "Do you haven't this card",
+		"invalid_actions": "Invalid input action canceled, please retry action",
+		'select_actions':'Please write a number of action',
 		'actions':'1-take, 2-passe, 3-contructor',
 	}
 
@@ -18,9 +19,13 @@ class ActionsTable():
 
 	def actions(self,action=None,card_selectd=None,ia=False):
 		if not action:
-			print(mgs['selectAction'])
+			print(mgs['select_actions'])
 			print(mgs['actions'])
-			action = int(input())
+			try:
+				action = int(input())
+			except ValueError:
+				print(mgs["invalid_actions"])
+				self.actions()
 
 		if action == 1:
 			return self.take(card_selectd,ia)
@@ -29,20 +34,21 @@ class ActionsTable():
 		elif action == 3:
 			return self.contructor(card_selectd)
 		else:
-			return self.passe(card_selectd,ia)
+			return self.actions()
 
 	def take(self,card_selectd,ia):
 		
 		if len(self.table) <= 0:
-			print("the table is empty u cant only pass")
+			print("The table is empty u cant only pass")
 			return self.passe(card_selectd = None,ia = False)
 			
 		if not card_selectd and ia == False:
-			print(mgs['selectCard'].format('table','take'))
+			print(mgs['select_card'].format('table','take'))
 			try:
 				card_selectd = int(input())
 			except ValueError:
-				self.take(card_selectd = None,ia = False)
+				print(mgs["invalid_actions"])
+				self.actions()
 			
 		# this for is for check card in the table
 		for card in range(len(self.table)):
@@ -51,26 +57,31 @@ class ActionsTable():
 
 			if is_correct_card and not is_a_constrution:
 				self.player['deckplayer'].append(self.table.pop(card))
-
-			else:
-				if ia == False and not self.check_if_card_in_hand(card_selectd):
-					if is_a_constrution: 
-						self.helper_take_constution(self.table[card],card_selectd)
-					else:	
-						print("You no have this card ")
-						self.take(card_selectd = None, ia = False)
-
-			# This for is take a move to card deck player 
-			for user_card in range(len(self.player['cardsHand'])):
-				if card_selectd == self.player['cardsHand'][user_card]['value']:
-					self.player['deckplayer'].append(self.player['cardsHand'].pop(user_card))
-					break; # This break for stop the cycle but is no necessary return 
+				self.take_card_the_user_hands(card_selectd)
 				
-			print('your a taked a {}'.format(card_selectd))
-			return clear()
+				print('your a taked a {}'.format(card_selectd))
+				return clear()
+			
+			if ia == False and not self.check_if_card_in_hand(card_selectd):
+				if is_a_constrution: 
+					self.helper_take_constution(self.table[card],card_selectd)
+					self.take_card_the_user_hands(card_selectd)
+				else:	
+					print("You no have this card ")
+					self.take(card_selectd = None, ia = False)
 
-		print('check your selectCard taked')
+				print('your a taked a {}'.format(card_selectd))
+				return clear()
+
+		print('Check your select_card taked')
 		return self.take(card_selectd = None,ia = False)
+
+	def take_card_the_user_hands(self,card_selectd):
+		# This for is take a move to card deck player 
+		for user_card in range(len(self.player['cardsHand'])):
+			if card_selectd == self.player['cardsHand'][user_card]['value']:
+				self.player['deckplayer'].append(self.player['cardsHand'].pop(user_card))
+				break; # This break for stop the cycle but is no necessary return 
 	
 	def helper_take_constution(self,constrution,card_selectd):
 		cards_of_constrution = constrution['value']
@@ -80,7 +91,7 @@ class ActionsTable():
 			if card_selectd == cards_of_constrution:
 				for x in range(len(constrution)):
 					self.player['deckplayer'].append(constrution['cards'].pop(0))
-				emptyList.append(table.pop(card_selectd))
+				eliminated_empty_dictonary(self)
 				break;
 
 			for user_card in range(len(self.player['cardsHand'])):
@@ -88,48 +99,61 @@ class ActionsTable():
 					self.player['deckplayer'].append(self.player['cardsHand'].pop(user_card))
 					break; # This break for stop the cycle but is no necessary return 
 
-		return;			
-		
+		return;	
 
+	def eliminated_empty_dictonary(self):
+		for empty_dictionary in range(len(self.table)):
+			if dict.keys(self.table[empty_dictionary]).__contains__("cards"):
+				del self.table[empty_dictionary]
+				break
+    		
+	#throw a Card	
 	def passe(self,card_selectd,ia):
 		
 		if not card_selectd:
-			print(mgs['selectCard'].format('your deck','throw'))
+			print(mgs['select_card'].format('your deck','throw')) 
 			try:
 				card_selectd = int(input())
 			except ValueError:
-				print('check your selectCard passed')
-				return self.passe(card_selectd = None, ia = False)
+				print(mgs["invalid_actions"])
+				self.actions()
 
 		for card in range(len(self.player['cardsHand'])):
 			if card_selectd == self.player['cardsHand'][card]['value']:
 				self.table.append(self.player['cardsHand'].pop(card))
-				print('your a trow a {}'.format(card_selectd))
+				print('Your a trow a {}'.format(card_selectd))
 				
 				return clear()
 
-		print('check your selectCard passed')
+		print('Check your select_card passed')
 		return self.passe(card_selectd = None, ia = False)
 
+	#make a constrution
 	def contructor(self,card_selectd):
 		
 		if len(self.table) <= 0:
-			print("the table is empty u cant only pass")
+			print("The table is empty u cant only pass")
 			return self.passe(card_selectd = None)
 			
 		if not card_selectd:
-			print(mgs['selectCard'].format('your deck','contructor'))
-			card_selectd = int(input())
-
+			print(mgs['select_card'].format('your deck','contructor'))
+			try:
+				card_selectd = int(input())
+			except ValueError:
+				print(mgs["invalid_actions"])
+				self.actions()
+			
 		for card in range(len(self.player['cardsHand'])):
 			if card_selectd == self.player['cardsHand'][card]['value']:
 				temp_player_card = self.player['cardsHand'].pop(card)
 				temp_table_card = None
 
-				print(mgs['selectCard'].format('table','contructor'))
+				print(mgs['select_card'].format('table','contructor'))
 				try:
 					table_card = int(input())
 				except ValueError:
+					print(mgs["invalid_actions"])
+					self.actions()
 					break;
 
 				if (card_selectd + table_card) >= 15:
@@ -144,7 +168,7 @@ class ActionsTable():
 							break;
 					self.table.append({'type':'constrution','value':temp_table_card['value']+temp_player_card['value'],'cards':[temp_table_card,temp_player_card]})
 					return;
-		print('check your selectCard')
+		print('Check your select_card')
 		return self.contructor(card_selectd=None)
 
 	def check_if_card_in_hand(self,card_selectd):

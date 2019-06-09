@@ -30,7 +30,7 @@ def helper_take_constution(table,player,constrution,card_selectd):
 		if card_selectd == card_of_constrution:
 			for x in range(len(constrution['cards'])):
 				player['deckplayer'].append(constrution['cards'].pop(0))
-			emptyList.append(table.pop(card))
+			eliminated_empty_dictonary(table)
 			break;
 
 		for user_card in range(len(player['cardsHand'])):
@@ -38,6 +38,12 @@ def helper_take_constution(table,player,constrution,card_selectd):
 				player['deckplayer'].append(player['cardsHand'].pop(user_card))
 				break; # This break for stop the cycle but is no necessary return 
 						
+def eliminated_empty_dictonary(table):
+	for empty_dictionary in range(len(table)):
+		if dict.keys(table[empty_dictionary]).__contains__("cards"):
+			del table[empty_dictionary]
+			break
+
 def check_if_card_in_hand(player,card_selectd):
 		
 	for card in range(len(player['cardsHand'])):	

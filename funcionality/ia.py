@@ -31,6 +31,7 @@ def helper_take_constution(table,player,constrution,card_selectd):
 			for x in range(len(constrution['cards'])):
 				player['deckplayer'].append(constrution['cards'].pop(0))
 			emptyList.append(table.pop(card))
+			break;
 
 		for user_card in range(len(player['cardsHand'])):
 			if card_selectd == card_of_constrution:

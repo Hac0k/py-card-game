@@ -19,37 +19,37 @@ class Point():
 		
 		#counter of the cards for spades
 			spadescounter = 0;
+			grancasinocount = 0;
+			smallcasino = 0;	
+			asescounter = 0	
 
 			for cards in range(len(self.players[x]['deckplayer'])):
 				if self.players[x]['deckplayer'][cards]['simbol'] == '♠':
 					spadescounter+=1
+
+				if self.players[x]['deckplayer'][cards]['number'] == '10':
+					grancasinocount+=1
+
+				if self.players[x]['deckplayer'][cards]['number'] == '2':
+					smallcasino+=1
+				
+				if self.players[x]['deckplayer'][cards]['number'] == 'a':
+					asescounter+=1
 			
 			if spadescounter >= 7:
 				for x in range(len(all_points)):
 					if self.players[x]['name'] == all_points[x][0]:
 						all_points[x][1]+=1
 					break
-		
-		#counter of the cards for grand casino
-			grancasinocount = 0;	
 
-			for cards in range(len(self.players[x]['deckplayer'])):
-				if self.players[x]['deckplayer'][cards]['number'] == '10':
-					grancasinocount+=1
-			
+		#counter of the cards for grand casino
 			if grancasinocount >= 4:
 				for x in range(len(all_points)):
 					if self.players[x]['name'] == all_points[x][0]:
 						all_points[x][1]+=2
 					break
-		
-		#counter of the cards for small casino
-			smallcasino = 0;	
 
-			for cards in range(len(self.players[x]['deckplayer'])):
-				if self.players[x]['deckplayer'][cards]['number'] == '10':
-					smallcasino+=1
-			
+		#counter of the cards for small casino
 			if smallcasino >= 4:
 				for x in range(len(all_points)):
 					if self.players[x]['name'] == all_points[x][0]:
@@ -57,12 +57,6 @@ class Point():
 					break	
 
 		#counter of the ases
-			asescounter = 0
-
-			for cards in range(len(self.players[x]['deckplayer'])):
-				if self.players[x]['deckplayer'][cards]['number'] == 'a':
-					asescounter+=1
-			
 			if asescounter >= 4:
 				for x in range(len(all_points)):
 					if self.players[x]['name'] == all_points[x][0]:

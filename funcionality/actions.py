@@ -46,25 +46,28 @@ class ActionsTable():
 			
 		# this for is for check card in the table
 		for card in range(len(self.table)):
+			is_correct_card = card_selectd == self.table[card]['value']
+			is_a_constrution = self.table[card]['type'] == 'constrution'
 
-			if card_selectd == self.table[card]['value']:
+			if is_correct_card and not is_a_constrution:
 				self.player['deckplayer'].append(self.table.pop(card))
 
+			else:
 				if ia == False and not self.check_if_card_in_hand(card_selectd):
-					if self.table[card]['type'] == 'constrution': 
+					if is_a_constrution: 
 						self.helper_take_constution(self.table[card],card_selectd)
 					else:	
 						print("You no have this card ")
 						self.take(card_selectd = None, ia = False)
 
-				# This for is take a move to card deck player 
-				for user_card in range(len(self.player['cardsHand'])):
-					if card_selectd == self.player['cardsHand'][user_card]['value']:
-						self.player['deckplayer'].append(self.player['cardsHand'].pop(user_card))
-						break; # This break for stop the cycle but is no necessary return 
-					
-				print('your a taked a {}'.format(card_selectd))
-				return clear()
+			# This for is take a move to card deck player 
+			for user_card in range(len(self.player['cardsHand'])):
+				if card_selectd == self.player['cardsHand'][user_card]['value']:
+					self.player['deckplayer'].append(self.player['cardsHand'].pop(user_card))
+					break; # This break for stop the cycle but is no necessary return 
+				
+			print('your a taked a {}'.format(card_selectd))
+			return clear()
 
 		print('check your selectCard taked')
 		return self.take(card_selectd = None,ia = False)
@@ -77,7 +80,8 @@ class ActionsTable():
 			if card_selectd == cards_of_constrution:
 				for x in range(len(constrution)):
 					self.player['deckplayer'].append(constrution['cards'].pop(0))
-					emptyList.append(table.pop(card_selectd))
+				emptyList.append(table.pop(card_selectd))
+				break;
 
 			for user_card in range(len(self.player['cardsHand'])):
 				if card_selectd == cards_of_constrution:
